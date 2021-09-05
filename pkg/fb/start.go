@@ -7,20 +7,20 @@ import (
 )
 
 func Start() {
-	startHb()
+	startFb()
 }
 
-func startHb() {
-	err := generateHbFile()
+func startFb() {
+	err := generateFbFile()
 	if err != nil {
-		util.Logger().Error("generate prom config file failed ", zap.Error(err))
+		util.Logger().Error("generate filebeat config file failed ", zap.Error(err))
 		return
 	}
 	err = util.CallScript(path.FbStartScript)
-	util.Logger().Error("run start prom scripts failed ", zap.Error(err))
+	util.Logger().Error("run start filebeat scripts failed ", zap.Error(err))
 }
 
-func generateHbFile() (err error) {
+func generateFbFile() (err error) {
 	// todo
 	return nil
 }
