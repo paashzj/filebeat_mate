@@ -14,4 +14,4 @@ COPY --from=build /opt/sh/compile/pkg/filebeat_mate /opt/sh/filebeat/mate/filebe
 
 WORKDIR /opt/sh/filebeat
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/filebeat/mate/scripts/start.sh"]
+CMD ["/usr/bin/dumb-init", "bash", "-vx", "/opt/sh/filebeat/mate/scripts/start.sh"]
