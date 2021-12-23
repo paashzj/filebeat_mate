@@ -3,6 +3,7 @@ package fb
 import (
 	"filebeat_mate/pkg/path"
 	"filebeat_mate/pkg/util"
+	"github.com/paashzj/gutil"
 	"go.uber.org/zap"
 )
 
@@ -16,8 +17,9 @@ func startFb() {
 		util.Logger().Error("generate filebeat config file failed ", zap.Error(err))
 		return
 	}
-	err = util.CallScript(path.FbStartScript)
-	util.Logger().Error("run start filebeat scripts failed ", zap.Error(err))
+	stdout, stderr, err := gutil.CallScript(path.FbStartScript)
+	util.Logger().Info("output is ", zap.String("stdout", stdout), zap.String("stderr", stderr))
+	util.Logger().Error("run start coredns scripts failed ", zap.Error(err))
 }
 
 func generateFbFile() (err error) {
